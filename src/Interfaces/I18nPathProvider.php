@@ -1,7 +1,7 @@
 <?php 
 
 
-namespace Grajewsky\Laravel\Interfaces;
+namespace Grajewsky\Laravel\I18n\Interfaces;
 
 
 interface I18nPathProvider {
@@ -12,7 +12,7 @@ interface I18nPathProvider {
      * @return string
      */
     public function getI18nPath(): string;
-    
+
     /**
      * Get specific locale
      */
