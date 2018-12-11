@@ -30,6 +30,9 @@ class I18nServiceProvider extends ServiceProvider
         ]);
 
         $this->i18nPathProviders = Config::get('i18n.providers');
+        if ($this->i18nPathProviders == null) {
+            $this->i18nPathProviders = include __DIR__.'/../config/i18n.php';
+        }
         
         $translations = $this->loadFromPathProviders();
 
