@@ -67,6 +67,7 @@ class I18nServiceProvider extends ServiceProvider
                 $translations = $translations->merge($this->loadFromPathProvider($provider));
             }
          }
+         print_r($translations);
          return $translations;
     }
     protected function loadFromPathProvider(I18nPathProvider $pathProvider): Collection {
