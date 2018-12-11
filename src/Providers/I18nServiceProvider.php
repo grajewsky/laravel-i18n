@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Grajewsky\Laravel\Interfaces\I18nPathProvider;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 
 class I18nServiceProvider extends ServiceProvider
 {
