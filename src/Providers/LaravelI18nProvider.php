@@ -2,7 +2,7 @@
 
 namespace Grajewsky\Laravel\I18n\Providers;
 
-use Grajewsky\Laravel\Interfaces\I18nPathProvider;
+use Grajewsky\Laravel\I18n\Interfaces\I18nPathProvider;
 
 class LaravelI18nProvider implements I18nPathProvider {
 

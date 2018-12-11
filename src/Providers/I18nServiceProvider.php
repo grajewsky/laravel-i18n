@@ -6,7 +6,7 @@ namespace Grajewsky\Laravel\I18n\Providers;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Grajewsky\Laravel\Interfaces\I18nPathProvider;
+use Grajewsky\Laravel\I18n\Interfaces\I18nPathProvider;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 
