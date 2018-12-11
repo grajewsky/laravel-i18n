@@ -1,0 +1,33 @@
+{
+    "name": "grajewsky/laravel-i18n",
+    "description": "JavaScript translations provider",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Grajewsky",
+            "email": "grajewski.lukasz@wp.pl"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+	},
+	
+    "autoload": {
+        "psr-4": {
+          "Grajewsky\\Laravel\\I18n\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Grajewsky\\Laravel\\I18n\\Providers\\I18nServiceProvider"
+            ]
+        },
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability" : "dev",
+    "prefer-stable" : true
+}
