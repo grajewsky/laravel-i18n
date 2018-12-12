@@ -10,15 +10,16 @@ The JSON based translations are not supported!
 You can install the package with composer, running the `composer require grajewsky/laravel-i18n` command.
 
 
-### Laravel 5.5 and up
-
-
-
-
 ### Laravel 5.4 and below
 
 You have to register the service provider manually.
 Go to the `config/app.php` file and add the `Grajewsky\Laravel\I18n\Providers\I18nServiceProvider::class` to the providers array.
+
+### Laravel 5.5 and up
+
+Package is auto-discover 
+
+### Configuration
 
 ```sh
 > php artisan vendor:publish
