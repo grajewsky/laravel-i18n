@@ -7,24 +7,29 @@ The JSON based translations are not supported!
 
 ## Getting started
 
-You can install the package with composer, running the `composer require grjewsky/i18n` command.
+You can install the package with composer, running the `composer require grajewsky/laravel-i18n` command.
+
 
 ### Laravel 5.5 and up
 
-If you are using version 5.5 and up, there is nothing else to do.
-Since the package supports autodiscovery, Laravel will register the service provider automatically behind the scenes.
 
-#### Disable the autodiscovery for the package
 
-In some cases you may disable autodiscovery for this package.
-You can add the provider class to the `dont-discover` array to disable it.
-
-Then you need to register it manually again.
 
 ### Laravel 5.4 and below
 
 You have to register the service provider manually.
 Go to the `config/app.php` file and add the `Grajewsky\Laravel\I18n\Providers\I18nServiceProvider::class` to the providers array.
+
+```sh
+> php artisan vendor:publish
+```
+You can add your own i18n paths providers
+only what u must to do is implements Grajewsky\Laravel\I18n\Interfaces\I18nProvider
+
+- getI18nPath(): string
+- getLocale(): string;
+
+and add I18nProvider into `config/i18n.php` Fullnamespace\MyI18nProvider::class
 
 ## Translations in view files
 
