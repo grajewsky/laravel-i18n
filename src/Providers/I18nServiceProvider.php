@@ -6,7 +6,7 @@ namespace Grajewsky\Laravel\I18n\Providers;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Grajewsky\Laravel\I18n\Interfaces\I18nPathProvider;
+use Grajewsky\Laravel\I18n\Interfaces\I18nProvider;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 
@@ -36,10 +36,7 @@ class I18nServiceProvider extends ServiceProvider
         }
         
         $translations = $this->loadFromPathProviders();
-
-
-
-        Blade::directive('translations', function ($key) {
+        Blade::directive('translations', function ($key) use ($translations) {
             return sprintf('<script>window[%s] = %s</script>', $key ?: "'translations'", $translations);
         });
     }
@@ -52,9 +49,9 @@ class I18nServiceProvider extends ServiceProvider
     protected function translations(string $langPath) {
         $files = File::files($langPath);
 
-        $result =  collect($files)->flatMap(function ($file) {
+        $result = collect($files)->flatMap(function ($file) {
             return [
-                ($translation = $file->getBasename('.php')) => trans($translation),
+                ($translation = $file->getBasename('.php')) => include $file->getPath() . "/". $file->getFilename() /*trans($translation)*/,
             ];
         });
         return $result;
@@ -63,14 +60,14 @@ class I18nServiceProvider extends ServiceProvider
         $translations = new Collection();
         foreach ($this->i18nPathProviders as $pathProvider) {
             $provider = new $pathProvider;
-            if ($provider instanceof I18nPathProvider) {
-                $translations = $translations->merge($this->loadFromPathProvider($provider));
+            if ($provider instanceof I18nProvider) {
+                $result = $this->loadFromPathProvider($provider);
+                $translations = $translations->merge($result);
             }
          }
-         print_r($translations);
          return $translations;
     }
-    protected function loadFromPathProvider(I18nPathProvider $pathProvider): Collection {
+    protected function loadFromPathProvider(I18nProvider $pathProvider): Collection {
         return $this->translations($pathProvider->getI18nPath() . sprintf("/%s%s", $pathProvider->getLocale(), "/"));
     }
 }
