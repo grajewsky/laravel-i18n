@@ -14,5 +14,8 @@ class LaravelI18nProvider implements I18nProvider {
     public function getI18nPath(): string {
         return resource_path('lang');
     }
+    public function getNamespace(): ?string {
+        return null;
+    }
     
 }

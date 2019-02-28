@@ -29,6 +29,7 @@ only what u must to do is implements Grajewsky\Laravel\I18n\Interfaces\I18nProvi
 
 - getI18nPath(): string
 - getLocale(): string;
+- getNamespace(): string;
 
 and add I18nProvider into `config/i18n.php` Fullnamespace\MyI18nProvider::class
 

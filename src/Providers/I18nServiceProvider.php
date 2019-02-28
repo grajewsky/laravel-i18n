@@ -59,9 +59,15 @@ class I18nServiceProvider extends ServiceProvider
     protected function loadFromPathProviders(): Collection {
         $translations = new Collection();
         foreach ($this->i18nPathProviders as $pathProvider) {
+            /** @var I18nProvider */
             $provider = new $pathProvider;
             if ($provider instanceof I18nProvider) {
-                $result = $this->loadFromPathProvider($provider);
+                $result = array();
+                if (!is_null($provider->getNamespace())) {
+                    $result[$provider->getNamespace()] = $this->loadFromPathProvider($provider);
+                } else {
+                    $result = $this->loadFromPathProvider($provider);
+                }
                 $translations = $translations->merge($result);
             }
          }
